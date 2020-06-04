@@ -33,3 +33,65 @@ In this final project, you will implement the missing parts in the schematic. To
 2. Make a build directory in the top level project directory: `mkdir build && cd build`
 3. Compile: `cmake .. && make`
 4. Run it: `./3D_object_tracking`.
+
+# Track an Object in 3D Space
+
+## FP.1 Match 3D Objects
+
+Implemented in camFusion_Student.cpp matchBoundingBoxes function.
+
+## FP.2 Compute Lidar-based TTC
+
+implemented in camFusion_Student.cpp computeTTCLidar function.
+
+Focus ego lane and used median x value to have robust result.
+
+## FP.3 Associate Keypoint Correspondences with Bounding Boxes
+
+Implemented in camFusion_Student.cpp clusterKptMatchesWithROI function.
+
+## Compute Camera-based TTC
+
+Implemented in camFusion_Student.cpp computeTTCCamera function. 
+
+used median value to have robust result.
+
+## FP.5 Performance Evaluation 1
+
+Could not find plausible result from sample lidar data. 
+
+<img src="images/e01.png" /> 
+<img src="images/e02.png" /> 
+<img src="images/e03.png" />  
+
+<img src="images/l01.png" /> 
+<img src="images/l02.png" /> 
+<img src="images/l03.png" />   
+
+## FP.6 Performance Evaluation 2
+
+From mid term result tested these methods.
+
+1. FAST-BRIEF (Fast and accuracy)
+2. FAST-ORB (Fast less accuracy)
+3. BRISK-BRIEF(High accuracy but slower)
+
+Some frame are big difference between Lider and Camera. FAST-BRIEF and FAST-ORB are ok.
+
+| Method        | LIDER           | CAMERA  |
+| ------------- |:-------------:| -----:|
+| FAST-BRIEF    | 12.13 | 11.91 |
+|               | 12.61 | 12.65 |
+|               | 14.34 | 21.28 |
+|               | 17.05 | 15.29 |
+|               | 15.58 | 35.15 |
+| FAST-ORB    | 12.13 | 11.53 |
+|               | 12.61 | 11.35 |
+|               | 14.34 | 16.58 |
+|               | 17.05 | 15.66 |
+|               | 15.58 | 30.55 |
+| BRISK-BRIEF    | 12.13 | 19.52 |
+|               | 12.61 | 26.39 |
+|               | 14.34 | 13.08 |
+|               | 17.05 | 25.58 |
+|               | 15.58 | 31.19 |
